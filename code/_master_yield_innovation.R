@@ -28,10 +28,11 @@ library(rnassqs)
 ## File system paths ====
 
 path <- here::here()
+path_data <- "~/Dropbox/Innovation/data"
+
 path_code <- file.path(path, "code")
 path_secrets <- file.path(path, "secrets")
 
-path_data <- file.path(path, "data")
 path_data_raw <- file.path(path_data, "raw")
 
 path_output <- file.path(path, "output")
