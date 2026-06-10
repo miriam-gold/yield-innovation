@@ -22,8 +22,12 @@ library(glue)
 library(fs)
 library(janitor)
 library(lubridate)
+library(readxl)
 
 library(rnassqs)
+library(FAOSTAT)
+
+library(fixest)
 
 ## File system paths ====
 
@@ -34,6 +38,7 @@ path_code <- file.path(path, "code")
 path_secrets <- file.path(path, "secrets")
 
 path_data_raw <- file.path(path_data, "raw")
+path_data_clean <- file.path(path_data, "clean")
 
 path_output <- file.path(path, "output")
 path_fig <- file.path(path_output, "figures")

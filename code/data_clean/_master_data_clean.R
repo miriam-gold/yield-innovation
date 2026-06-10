@@ -11,7 +11,7 @@ path_code_data_clean %>%
 if (SOURCE_SCRIPTS) {
   ## Import NASS Ag Census data via API ==================
   path_code_data_clean %>%
-    file.path("data_clean_nass_census_import.R") %>%
+    file.path("data_import_nass_census.R") %>%
     source()
 }
 
