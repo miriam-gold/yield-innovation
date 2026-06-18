@@ -16,6 +16,7 @@ SOURCE_SCRIPTS <- FALSE
 
 ## Load packages ====
 library(tidyverse)
+library(dplyr)
 library(magrittr)
 library(showtext)
 library(glue)
@@ -26,8 +27,15 @@ library(readxl)
 
 library(rnassqs)
 library(FAOSTAT)
+library(GAEZr)
 
 library(fixest)
+
+library(raster)
+library(terra)
+library(sf)
+library(tidyterra)
+
 
 ## File system paths ====
 
@@ -39,6 +47,11 @@ path_secrets <- file.path(path, "secrets")
 
 path_data_raw <- file.path(path_data, "raw")
 path_data_clean <- file.path(path_data, "clean")
+
+path_data_raw_gaez <- file.path(path_data_raw, "gaez")
+path_data_raw_geo <- file.path(path_data_raw, "geography")
+path_data_raw_gfc <- file.path(path_data_raw, "gfc")
+path_data_raw_gfc_lossyear <- file.path(path_data_raw_gfc, "lossyear")
 
 path_output <- file.path(path, "output")
 path_fig <- file.path(path_output, "figures")
