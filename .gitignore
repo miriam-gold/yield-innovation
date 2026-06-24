@@ -52,3 +52,6 @@ rsconnect/
 secrets/
 # Data
 data/
+
+# venv
+.venv/
