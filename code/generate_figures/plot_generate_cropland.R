@@ -1,8 +1,8 @@
 # ---------------------------------------------------------------------------- #
 #'
-#' Description: Generate and save plots of Global Forest Change (Hansen)
+#' Description: Generate and save plots of Potapov's Global Cropland Expansion
 #' Author: Miriam Gold
-#' Date: 23 June 2026
+#' Date: 24 June 2026
 #' Last revised: date, mag
 #' Notes: notes
 #'
@@ -14,9 +14,9 @@ READ_DATA <- TRUE
 # Read in data ====================================
 
 if (READ_DATA) {
-  gfc_loss_by_year_africa <-
+  potapov_cropland_by_country_clean <-
     path_data_clean %>%
-    file.path("gfc", "gfc_loss_by_year_africa_clean.csv") %>%
+    file.path("potapov", "potapov_cropland_by_country_clean.csv") %>%
     read_csv()
 }
 
@@ -39,8 +39,9 @@ theme_set(
 ## column is an argument that will be passed to ggsave_wrapper()
 gfc_fig_args <-
   tribble(
-    ~plot_fn                , ~filename                , ~path    , ~width , ~height ,
-    plot_gfc_africa_by_year , "gfc_africa_by_year.pdf" , path_fig ,      8 ,       6 ,
+    ~plot_fn                    , ~filename                    , ~path    , ~width , ~height ,
+    plot_potapov_africa_by_year , "potapov_africa_by_year.pdf" , path_fig ,      8 ,       6 ,
+    plot_potapov_africa_diff    , "potapov_africa_diff.pdf"    , path_fig ,      8 ,       6
   )
 
 ## Generate and save plots

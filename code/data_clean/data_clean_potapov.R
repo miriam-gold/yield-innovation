@@ -30,7 +30,11 @@ potapov_cropland_by_country_clean <-
   mutate(
     year = as.integer(year),
     cropland_ha = cropland_sqm * 1e-4
-  )
+  ) %>%
+  group_by(country_co, year) %>%
+  arrange(desc(cropland_ha)) %>%
+  ungroup() %>%
+  distinct(country_co, year, .keep_all = TRUE)
 
 # Write ================================
 potapov_cropland_by_country_clean %>%
