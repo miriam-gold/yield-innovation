@@ -8,14 +8,18 @@
 #'
 # ---------------------------------------------------------------------------- #
 
-# import ee
+
 import pandas as pd
 import ast
 import re
 
+# Read =================================
+
 gfc_loss_by_year_africa_raw = pd.read_csv(
     "~/Google Drive/My Drive/yield-innovation/gfc_loss_by_year_africa.csv"
 )
+
+# Clean ================================
 
 gfc_loss_by_year_africa_clean = gfc_loss_by_year_africa_raw[["country_co", "groups"]]
 
@@ -50,8 +54,9 @@ gfc_loss_panel = pd.concat(
 )
 
 gfc_loss_panel[gfc_loss_panel["country_co"] == "EG"]
-gfc_loss_panel["loss_km"] = gfc_loss_panel["sum"] * 1e-6
+gfc_loss_panel["loss_ha"] = gfc_loss_panel["sum"] * 1e-4
 
+# Write ================================
 gfc_loss_panel.to_csv(
     "~/Dropbox/Innovation/data/clean/gfc/gfc_loss_by_year_africa_clean.csv"
 )

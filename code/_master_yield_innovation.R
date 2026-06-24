@@ -41,6 +41,7 @@ library(tidyterra)
 
 path <- here::here()
 path_data <- "~/Dropbox/Innovation/data"
+path_drive <- "~/Google Drive/My Drive/yield-innovation"
 
 path_code <- file.path(path, "code")
 path_secrets <- file.path(path, "secrets")

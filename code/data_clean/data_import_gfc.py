@@ -1,8 +1,8 @@
 """
-Description: Clean GAEZ crop suitability data
+Description: Import global forest change data from Google Earth Engine
 Author: Miriam Gold
 Date: 17 June 2026
-Last revised: date, mag
+Last revised: 23 June 2026, mag
 Notes: notes
 """
 
