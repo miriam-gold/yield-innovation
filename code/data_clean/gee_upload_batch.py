@@ -65,4 +65,4 @@ for tif in local_tifs:
     print(f"Asset ID will be: {asset_id}")
     print(f"Track status in GEE Tasks or via Python using Task ID: {task_id}")
 
-# [b.delete() for b in bucket.list_blobs()]
+[b.delete() for b in bucket.list_blobs()]
