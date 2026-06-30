@@ -21,7 +21,6 @@ gfc_cover2000 = gfc.select("treecover2000")
 gfc_loss = gfc.select("loss")
 gfc_lossyear = gfc.select("lossyear")
 
-# Consider two countries...
 african_countries = countries.filter(ee.Filter.Or(ee.Filter.eq("wld_rgn", "Africa")))
 
 gfc_loss_area = gfc_loss.multiply(ee.Image.pixelArea())

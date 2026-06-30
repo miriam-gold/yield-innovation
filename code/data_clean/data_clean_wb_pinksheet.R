@@ -11,19 +11,28 @@
 data_wb_world_price_annual <-
   path_data_raw %>%
   file.path("wb_pinksheet", "CMO-Historical-Data-Annual.xlsx") %>%
-  read_xlsx(sheet = "Annual Prices (Nominal)", skip = 6)
+  read_xlsx(sheet = "Annual Prices (Nominal)", skip = 6) %>%
+  mutate(source = "nominal")
+
+data_wb_world_price_real <-
+  path_data_raw %>%
+  file.path("wb_pinksheet", "CMO-Historical-Data-Annual.xlsx") %>%
+  read_xlsx(sheet = "Annual Prices (Real)", skip = 5) %>%
+  mutate(source = "real")
+
 
 data_wb_world_price_annual_clean <-
   data_wb_world_price_annual %>%
+  bind_rows(data_wb_world_price_real) %>%
   clean_names() %>%
   rename(
     year = x1
   ) %>%
-  slice(2:nrow(.)) %>%
+  filter(!is.na(year)) %>%
   pivot_longer(
-    cols = !year,
+    cols = !c(source, year),
     names_to = "commodity",
-    values_to = "price_nom"
+    values_to = "price"
   ) %>%
   mutate(
     commodity_harmonized = case_when(
@@ -33,7 +42,7 @@ data_wb_world_price_annual_clean <-
       str_starts(commodity, "wheat_") ~ "wheat",
       .default = commodity
     ),
-    price_nom = as.numeric(price_nom)
+    price = as.numeric(price)
   )
 
 wb_ag_commodity_units <-

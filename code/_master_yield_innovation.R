@@ -25,6 +25,9 @@ library(janitor)
 library(lubridate)
 library(readxl)
 
+library(ggthemes)
+library(binsreg)
+
 library(rnassqs)
 library(FAOSTAT)
 library(GAEZr)

@@ -43,6 +43,9 @@ wb_distortions_filtered <-
 
 distortions_world_price_merged <-
   wb_world_price_annual %>%
+  filter(source == "nominal") %>%
+  select(!source) %>%
+  rename(price_nom = price) %>%
   filter(commodity_harmonized %in% major_crops) %>%
   full_join(
     wb_distortions_filtered,

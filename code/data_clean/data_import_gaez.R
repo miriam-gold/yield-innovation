@@ -1,6 +1,6 @@
 # ----------------------------------------------------------------------------
 #'
-#' Description: Import GAEZ crop suitability data from the FAO endpoint
+#' Description: Import raw GAEZ crop suitability rasters from the FAO endpoint
 #' Author: Miriam Gold
 #' Date: 16 June 2026
 #' Last revised: date, mag
