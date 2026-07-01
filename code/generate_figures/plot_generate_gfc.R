@@ -17,6 +17,13 @@ if (READ_DATA) {
   gfc_loss_by_year_africa <-
     path_data_clean %>%
     file.path("gfc", "gfc_loss_by_year_africa_clean.csv") %>%
+    read_csv() %>%
+    select(!c(`...1`, group, sum))
+
+  # World prices, weighted by average GAEZ suitability
+  price_yl_weighted_panel <-
+    path_data_clean %>%
+    file.path("wb_pinksheet", "wb_world_price_yl_weighted.csv") %>%
     read_csv()
 }
 
@@ -39,8 +46,9 @@ theme_set(
 ## column is an argument that will be passed to ggsave_wrapper()
 gfc_fig_args <-
   tribble(
-    ~plot_fn                , ~filename                , ~path    , ~width , ~height ,
-    plot_gfc_africa_by_year , "gfc_africa_by_year.pdf" , path_fig ,      8 ,       6 ,
+    ~plot_fn                            , ~filename                            , ~path    , ~width , ~height ,
+    plot_gfc_africa_by_year             , "gfc_africa_by_year.pdf"             , path_fig ,      8 ,       6 ,
+    plot_deforest_price_z_gaez_weighted , "deforest_price_z_gaez_weighted.pdf" , path_fig ,      8 ,       6
   )
 
 ## Generate and save plots

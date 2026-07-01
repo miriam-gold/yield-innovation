@@ -1,6 +1,6 @@
 # ---------------------------------------------------------------------------- #
 #'
-#' Description: Generate and save plots of Nominal Rate of Assistance
+#' Description: Generate and save plots of Nominal Rate of Assistance and WB pinksheet
 #' Author: Miriam Gold
 #' Date: 9 June 2026
 #' Last revised: date, mag
@@ -17,6 +17,23 @@ if (READ_DATA) {
   distortions_world_price_merged <-
     path_data_clean %>%
     file.path("wb_distortions", "distortions_world_price_merged.csv") %>%
+    read_csv()
+
+  ## Pink sheet world prices
+  wb_world_price_annual <-
+    path_data_clean %>%
+    file.path("wb_pinksheet", 'wb_world_price_annual_clean.csv') %>%
+    read_csv()
+
+  gaez_yield_by_country <-
+    path_drive %>%
+    file.path("gaez_avg_yield_by_country.csv") %>%
+    read_csv()
+
+  # World prices, weighted by average GAEZ suitability
+  price_yl_weighted_panel <-
+    path_data_clean %>%
+    file.path("wb_pinksheet", "wb_world_price_yl_weighted.csv") %>%
     read_csv()
 }
 
@@ -45,6 +62,9 @@ nra_fig_args <-
     plot_world_price_nra_by_country("brazil")    , "world_price_nra_by_country_brazil.pdf"    , path_fig ,      7 ,       6 ,
     plot_world_price_nra_by_country("indonesia") , "world_price_nra_by_country_indonesia.pdf" , path_fig ,      7 ,       6 ,
     plot_world_price_nra_by_country("china")     , "world_price_nra_by_country_china.pdf"     , path_fig ,      7 ,       6 ,
+    plot_biofuel_crop_prices                     , "biofuel_crop_prices.pdf"                  , path_fig ,      8 ,       6 ,
+    plot_gaez_attain_yl_by_country               , "gaez_attain_yl_by_country.pdf"            , path_fig ,      8 ,       6 ,
+    plot_price_z_gaez_weighted_by_country        , "price_z_gaez_weighted_by_country.pdf"     , path_fig ,      8 ,       6
   )
 
 ## Generate and save plots
